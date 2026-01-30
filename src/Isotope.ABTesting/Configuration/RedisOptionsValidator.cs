@@ -8,7 +8,7 @@ public sealed class RedisOptionsValidator : IValidateOptions<RedisOptions>
     {
         var errors = new List<string>();
 
-        if (string.IsNullOrWhiteSpace(options.ConnectionString) || options.ConnectionString == "localhost:6379")
+        if (string.IsNullOrWhiteSpace(options.ConnectionString))
         {
             errors.Add("Redis ConnectionString is required. " +
                        "Please set 'ConnectionString' in code, or define 'ConnectionStrings:Redis' in appsettings.json.");

@@ -28,7 +28,8 @@ namespace SampleApi.Controllers
         {
             var result = await _aBTestClient.Experiment("WeatherForecastExperiment")
                 .WithVariants(("VariantA", 10), ("VariantB", 90))
-                .UseAlgorithm<DeterministicHashStrategy>()
+                .UseAlgorithm<WeightedRandomStrategy>()
+                .RequirePersistence()
                 .OnFailure(Fallback.ToVariant("VariantB"))
                 .GetVariantAsync("user-id-123");
 

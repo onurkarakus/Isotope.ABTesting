@@ -7,7 +7,7 @@ public sealed class ABTestingOptions
     /// </summary>
     public string? ServiceName { get; set; }
 
-    public TimeSpan DefaultTtl { get; set; } = TimeSpan.FromDays(30);
+    public TimeSpan DefaultTtl { get; set; } = TimeSpan.FromMinutes(30);
 
     public LoggingOptions Logging { get; set; } = new();  
 }

@@ -27,6 +27,7 @@ public static class ServiceCollectionExtensions
         services.TryAddSingleton<IStateStore, InMemoryStateStore>();
 
         services.TryAddSingleton<DeterministicHashStrategy>();
+        services.TryAddSingleton<WeightedRandomStrategy>();
 
         return new ABTestingBuilder(services);
     }

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Isotope.ABTesting", "src\Is
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApi", "src\SampleApi\SampleApi.csproj", "{ECC8598D-D9C2-4AAA-94FA-1E5FCB4CDC16}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Isotope.ABTesting.Tests", "tests\Isotope.ABTesting.Tests\Isotope.ABTesting.Tests.csproj", "{C5244569-DC92-448E-ADEF-08C9D9B4C94F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{ECC8598D-D9C2-4AAA-94FA-1E5FCB4CDC16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECC8598D-D9C2-4AAA-94FA-1E5FCB4CDC16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECC8598D-D9C2-4AAA-94FA-1E5FCB4CDC16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5244569-DC92-448E-ADEF-08C9D9B4C94F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5244569-DC92-448E-ADEF-08C9D9B4C94F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5244569-DC92-448E-ADEF-08C9D9B4C94F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5244569-DC92-448E-ADEF-08C9D9B4C94F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{BC1339A4-D0BD-4B08-8141-7DBAF03DEE51} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{ECC8598D-D9C2-4AAA-94FA-1E5FCB4CDC16} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{C5244569-DC92-448E-ADEF-08C9D9B4C94F} = {FA238065-5240-4FEF-9771-36F67E41F157}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ADA3CEAD-FA4A-4890-A328-114E3866712B}
