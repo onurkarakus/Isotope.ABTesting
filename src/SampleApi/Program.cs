@@ -1,4 +1,6 @@
 
+using Isotope.ABTesting.Extensions;
+
 namespace SampleApi
 {
     public class Program
@@ -11,7 +13,7 @@ namespace SampleApi
 
             builder.Services.AddABTesting(options =>
             {
-                options.ServiceName = "OrderApi"; // Servis adýný mutlaka ver (Key prefix için)
+                options.ServiceName = "order-api";
             });
 
             builder.Services.AddControllers();

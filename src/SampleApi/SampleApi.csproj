@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SmartAbTest\SmartAbTest.csproj" />
+    <ProjectReference Include="..\Isotope.ABTesting\Isotope.ABTesting.csproj" />
   </ItemGroup>
 
 </Project>
