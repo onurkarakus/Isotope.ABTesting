@@ -29,7 +29,7 @@ public sealed class DeterministicHashStrategy : IAllocationStrategy
 
         foreach (var variant in context.Variants)
         {
-            cumulative += variant.Weight;
+            cumulative += variant.NormalizedWeight;
 
             if (bucket < cumulative)
             {

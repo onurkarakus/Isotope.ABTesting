@@ -4,13 +4,17 @@ using Isotope.ABTesting.Configuration;
 using Isotope.ABTesting.Extensions;
 using Isotope.ABTesting.StateStores;
 using Isotope.ABTesting.Strategies;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Xunit;
 
 namespace Isotope.ABTesting.Tests.Extensions;
 
 public class ServiceCollectionExtensionsTests
 {
+    private IConfiguration GetEmptyConfiguration() => new ConfigurationBuilder().Build();
+
     [Fact]
     public void AddABTesting_ThrowsOnNullServices()
     {
@@ -21,11 +25,7 @@ public class ServiceCollectionExtensionsTests
     public void AddABTestingWithConfigure_ThrowsOnNullParameters()
     {
         var services = new ServiceCollection();
-
-        // null services
         Assert.Throws<ArgumentNullException>(() => ServiceCollectionExtensions.AddABTesting(null!, (Action<ABTestingOptions>)(_ => { })));
-
-        // null configure
         Assert.Throws<ArgumentNullException>(() => ServiceCollectionExtensions.AddABTesting(services, null!));
     }
 
@@ -33,6 +33,8 @@ public class ServiceCollectionExtensionsTests
     public void AddABTesting_ReturnsBuilderWithSameServiceCollection()
     {
         var services = new ServiceCollection();
+        services.AddSingleton(GetEmptyConfiguration());
+        services.AddLogging(); // DÜZELTME: Logger servisi eklendi
 
         var builder = services.AddABTesting();
 
@@ -44,6 +46,8 @@ public class ServiceCollectionExtensionsTests
     public void AddABTesting_WithConfigure_AppliesOptions()
     {
         var services = new ServiceCollection();
+        services.AddSingleton(GetEmptyConfiguration());
+        services.AddLogging(); // DÜZELTME: Logger servisi eklendi
 
         services.AddABTesting(opts => opts.ServiceName = "my-service");
 
@@ -57,6 +61,8 @@ public class ServiceCollectionExtensionsTests
     public void AddABTesting_RegistersIABTestClientAndIsSingleton()
     {
         var services = new ServiceCollection();
+        services.AddSingleton(GetEmptyConfiguration());
+        services.AddLogging(); // DÜZELTME: Logger servisi eklendi
 
         services.AddABTesting();
 
@@ -73,6 +79,8 @@ public class ServiceCollectionExtensionsTests
     public void AddABTesting_DefaultsToInMemoryStateStore_WhenNotPreRegistered()
     {
         var services = new ServiceCollection();
+        services.AddSingleton(GetEmptyConfiguration());
+        services.AddLogging(); // DÜZELTME: Logger servisi eklendi
 
         services.AddABTesting();
 
@@ -86,6 +94,8 @@ public class ServiceCollectionExtensionsTests
     public void AddABTesting_DoesNotOverridePreRegisteredStateStore()
     {
         var services = new ServiceCollection();
+        services.AddSingleton(GetEmptyConfiguration());
+        services.AddLogging(); // DÜZELTME: Logger servisi eklendi
 
         var preRegistered = new PreRegisteredStateStore();
         services.AddSingleton<IStateStore>(preRegistered);
@@ -102,6 +112,8 @@ public class ServiceCollectionExtensionsTests
     public void Builder_UseStateStore_InstanceReplacesDefault()
     {
         var services = new ServiceCollection();
+        services.AddSingleton(GetEmptyConfiguration());
+        services.AddLogging(); // DÜZELTME: Logger servisi eklendi
 
         var builder = services.AddABTesting();
         var custom = new PreRegisteredStateStore();
@@ -118,6 +130,8 @@ public class ServiceCollectionExtensionsTests
     public void Strategies_AreRegisteredAsSingletons()
     {
         var services = new ServiceCollection();
+        services.AddSingleton(GetEmptyConfiguration());
+        services.AddLogging(); // DÜZELTME: Logger servisi eklendi
 
         services.AddABTesting();
 
@@ -137,6 +151,8 @@ public class ServiceCollectionExtensionsTests
     public void AddABTesting_RegistersOptionsValidatorAndPostConfigure()
     {
         var services = new ServiceCollection();
+        services.AddSingleton(GetEmptyConfiguration());
+        services.AddLogging(); // DÜZELTME: Logger servisi eklendi
 
         services.AddABTesting();
 

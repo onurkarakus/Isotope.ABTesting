@@ -215,8 +215,6 @@ public sealed class ExperimentBuilder : IExperimentBuilder
             {
                 _logger.LogWarning(ex, "Failed to read from state store for ExperimentId: {ExperimentId}, SubjectKey: {SubjectKey}. Proceeding without cache.",
                     _experimentId, subjectKey);
-
-                return await ExecuteFallbackAsync(subjectKey, ex, cancellationToken);
             }
         }
 
@@ -239,7 +237,7 @@ public sealed class ExperimentBuilder : IExperimentBuilder
             _logger.LogError(ex, "Experiment '{ExperimentId}': Algorithm execution failed - {ErrorMessage}",
                 _experimentId, ex.Message);
 
-            throw ExceptionFactory.AlgorithmExecutionFailed(_experimentId, ex);
+            return await ExecuteFallbackAsync(subjectKey, ex, cancellationToken);
         }
 
         if (shouldPersist)

@@ -18,11 +18,9 @@ internal class DelegateAllocationStrategy : IAllocationStrategy
         _options = options ?? new CustomAlgorithmOptions();
     }
 
-    public bool RequireState => _options.RequireState;
+    public bool RequiresState => _options.RequireState;
 
-    public bool IsDeterministic => _options.IsDeterministic;
-
-    public bool RequiresState => throw new NotImplementedException();
+    public bool IsDeterministic => _options.IsDeterministic;    
 
     public ValueTask<AllocationResult> AllocateAsync(AllocationContext context, CancellationToken cancellationToken = default)
     {
